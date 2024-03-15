@@ -5,6 +5,7 @@ export default {
     extend: {
       fontFamily: {
         utama: ["Lateef, serif"],
+        kedua: ["Grenze, serif"],
         inter: ["Inter, sans-serif"],
       },
       colors: {

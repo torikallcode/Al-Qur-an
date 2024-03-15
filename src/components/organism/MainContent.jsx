@@ -20,7 +20,7 @@ export const Main = () => {
 
 
   return (
-    <div ref={sectionRef} className="flex flex-col justify-center items-center mt-20 mb-20">
+    <div ref={sectionRef} className="flex flex-col justify-center items-center mt-10 mb-20">
       <h1 className="text-3xl mb-10 text-start font-inter font-semibold w-full text-primary">
         Learn & Recite Quran everytime
       </h1>
