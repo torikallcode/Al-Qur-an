@@ -4,6 +4,7 @@ import './index.css'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import { Home } from './pages/home'
 import { Details } from './pages/details'
+import { Doa } from './pages/doa'
 
 const router = createBrowserRouter([
   {
@@ -13,6 +14,10 @@ const router = createBrowserRouter([
   {
     path: "/surah/:nomor",
     element: <Details></Details>
+  },
+  {
+    path: "/doa/:id",
+    element: <Doa></Doa>
   }
 ])
 
