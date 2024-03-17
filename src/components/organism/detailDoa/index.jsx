@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { getDetailDoa } from '../../../sevices/Doa'
 import { BackSvg } from '../../atoms/BackSvg'
+import { Loading } from '../../atoms/Loading'
 
 export const DetailDoa = () => {
   const { id } = useParams()
@@ -31,9 +32,7 @@ export const DetailDoa = () => {
           </div>
         </div>
       ) : (
-        <div className="w-full flex justify-center items-center h-[50vh]">
-          <span className="loading loading-infinity loading-lg"></span>
-        </div>
+        <Loading></Loading>
       )}
     </div>
   )

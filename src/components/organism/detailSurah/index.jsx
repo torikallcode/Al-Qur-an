@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { getDetailSurah } from "../../../sevices/AlquranAPI";
 import { BorderSvg } from "../../atoms/BorderSvg";
 import { AudioOn } from "../../atoms/AudioOn";
+import { Loading } from "../../atoms/Loading";
 
 export const DetailSurah = ({ children }) => {
   const { nomor } = useParams();
@@ -56,9 +57,7 @@ export const Body = ({ surah }) => {
           </div>
         ))
       ) : (
-        <div className="w-full flex justify-center items-center h-[50vh]">
-          <span className="loading loading-infinity loading-lg"></span>
-        </div>
+        <Loading></Loading>
       )}
     </div>
   )

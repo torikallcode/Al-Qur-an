@@ -4,6 +4,7 @@ import { Surah } from "../molecules/Surah";
 import { Button } from "../atoms/Button";
 import { getDoa } from "../../sevices/Doa";
 import { Doa } from "../molecules/Doa";
+import { Loading } from "../atoms/Loading";
 
 export const MainContent = () => {
   const [surah, setSurah] = useState([]);
@@ -72,11 +73,8 @@ export const MainContent = () => {
           )}
         </div>
       ) : (
-        <div className="w-full flex justify-center items-center h-[50vh]">
-          <span className="loading loading-infinity loading-lg"></span>
-        </div>
-      )
-      }
+        <Loading></Loading>
+      )}
     </div >
   );
 };
