@@ -66,7 +66,7 @@ export const MainContent = () => {
           ) : (
             doa.map((item) => {
               return (
-                <Doa id={item.id} key={item.id} id={item.id} judul={item.judul}></Doa>
+                <Doa id={item.id} key={item.id} judul={item.judul}></Doa>
               );
             })
           )}
