@@ -4,6 +4,7 @@ import { getDetailSurah } from "../../../sevices/AlquranAPI";
 import { BorderSvg } from "../../atoms/BorderSvg";
 import { AudioOn } from "../../atoms/AudioOn";
 import { Loading } from "../../atoms/Loading";
+import { BackSvg } from "../../atoms/BackSvg";
 
 export const DetailSurah = ({ children }) => {
   const { nomor } = useParams();
@@ -25,11 +26,11 @@ export const DetailSurah = ({ children }) => {
 
 export const Header = ({ surah }) => {
   return (
-    <div className="w-full bg-primary flex px-5 justify-between items-center py-3 sm:px-8 lg:px-20 xl:px-40">
-      <div className="relative flex justify-center items-center">
-        <span className="absolute font-semibold font-inter text-xs text-putih">{surah.jumlah_ayat}</span>
-        <BorderSvg className="w-11 h-11" warna="#EEEEEE"></BorderSvg>
-      </div>
+    <div className="w-full bg-primary flex px-5 justify-between items-center py-3 sm:px-8 lg:px-20 xl:px-40 relative">
+      <button className='absolute top-6 left-3  w-9 h-9' onClick={() => window.history.back()}>
+        <BackSvg className="w-full h-full" warna={'#EEEEEE'}></BackSvg>
+      </button>
+      <span className="p-3"></span>
       <div className="flex flex-col justify-center items-center">
         <h1 className="font-utama text-5xl text-putih leading-[3rem]">{surah.nama}</h1>
         <h1 className="font-inter text-xs text-putih">( {surah.arti} )</h1>

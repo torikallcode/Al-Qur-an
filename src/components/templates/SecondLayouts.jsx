@@ -6,7 +6,7 @@ export const SecondLayouts = () => {
   return (
     <div>
       <DetailSurah></DetailSurah>
-      <ButtomNavbar></ButtomNavbar>
+      {/* <ButtomNavbar></ButtomNavbar> */}
     </div>
   )
 }

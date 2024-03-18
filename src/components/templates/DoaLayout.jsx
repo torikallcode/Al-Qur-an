@@ -8,7 +8,7 @@ export const DoaLayout = () => {
   return (
     <div>
       <DetailDoa></DetailDoa>
-      <ButtomNavbar></ButtomNavbar>
+      {/* <ButtomNavbar></ButtomNavbar> */}
     </div>
   )
 }

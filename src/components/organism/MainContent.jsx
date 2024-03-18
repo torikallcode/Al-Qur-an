@@ -5,6 +5,7 @@ import { Button } from "../atoms/Button";
 import { getDoa } from "../../sevices/Doa";
 import { Doa } from "../molecules/Doa";
 import { Loading } from "../atoms/Loading";
+import { ButtomNavbar } from "./ButtomNavbar";
 
 export const MainContent = () => {
   const [surah, setSurah] = useState([]);
@@ -22,6 +23,7 @@ export const MainContent = () => {
     })
   }, [])
 
+
   const [pilih, setPilih] = useState(true)
 
   const sectionRef = useRef();
@@ -30,6 +32,8 @@ export const MainContent = () => {
     sectionRef.current.scrollIntoView({ behavior: 'smooth' });
   }
 
+  const buttonClassSurah = pilih ? 'bg-primary text-white' : 'bg-transparent border-2 border-primary text-primary';
+  const buttonClassDoa = pilih ? 'bg-transparent border-2 border-primary text-primary' : 'bg-primary text-white';
 
   return (
     <div ref={sectionRef} className="flex flex-col justify-center items-center mt-10 mb-20">
@@ -40,12 +44,12 @@ export const MainContent = () => {
         <Button
           text="Surah"
           onClick={() => setPilih(true)}
-          className="py-2 px-9 rounded-full bg-primary text-white font-medium"
+          className={`py-2 px-9 rounded-full ${buttonClassSurah} font-medium font-inter`}
         ></Button>
         <Button
           text="Do'a"
           onClick={() => setPilih(false)}
-          className="py-2 px-11 rounded-full bg-transparent border-2 border-primary text-primary font-medium"
+          className={`py-2 px-9 rounded-full ${buttonClassDoa} font-medium font-inter`}
         ></Button>
       </div>
       {surah.length > 0 ? (
