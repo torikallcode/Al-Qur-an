@@ -5,6 +5,8 @@ import { BorderSvg } from "../../atoms/BorderSvg";
 import { AudioOn } from "../../atoms/AudioOn";
 import { Loading } from "../../atoms/Loading";
 import { BackSvg } from "../../atoms/BackSvg";
+import { PlaySvg } from "../../atoms/PlaySvg";
+import { PauseSvg } from "../../atoms/PauseSvg";
 
 export const DetailSurah = ({ children }) => {
   const { nomor } = useParams();
@@ -15,6 +17,7 @@ export const DetailSurah = ({ children }) => {
       setSurah(data)
     })
   }, [nomor])
+
   return (
     <div className="flex flex-col justify-center items-center w-full bg-putih">
       {children}
@@ -25,6 +28,17 @@ export const DetailSurah = ({ children }) => {
 }
 
 export const Header = ({ surah }) => {
+  const [isPlayingAudio, setIsPlayingAudio] = useState(false);
+  const audioRef = React.createRef();
+
+  const toggleAudio = () => {
+    if (isPlayingAudio) {
+      audioRef.current.pause();
+    } else {
+      audioRef.current.play();
+    }
+    setIsPlayingAudio(!isPlayingAudio);
+  };
   return (
     <div className="w-full bg-primary flex px-5 justify-between items-center py-3 sm:px-8 lg:px-20 xl:px-40 relative">
       <button className='absolute top-6 left-3  w-9 h-9' onClick={() => window.history.back()}>
@@ -35,7 +49,10 @@ export const Header = ({ surah }) => {
         <h1 className="font-utama text-5xl text-putih leading-[3rem]">{surah.nama}</h1>
         <h1 className="font-inter text-xs text-putih">( {surah.arti} )</h1>
       </div>
-      <AudioOn className={`w-6 h-6`} warna="#EEEEEE"></AudioOn>
+      <div>
+        <audio ref={audioRef} src={surah.audio} />
+        <button onClick={toggleAudio}>{isPlayingAudio ? <PauseSvg className={`w-9 h-9`} warna="#EEEEEE"></PauseSvg> : <PlaySvg className={`w-9 h-9`} warna="#EEEEEE"></PlaySvg>}</button>
+      </div>
     </div>
   )
 }
@@ -43,16 +60,18 @@ export const Header = ({ surah }) => {
 export const Body = ({ surah }) => {
   return (
     <div className="w-full px-5 py-8 flex flex-col sm:px-8 lg:px-20 xl:px-40">
-      <h1 className="font-utama text-4xl text-secondary text-center mb-12 sm:text-5xl lg:text-4xl">بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيْمِ</h1>
+      {surah.nomor !== 1 && surah.nomor !== 9 && (
+        <h1 className="font-utama text-4xl text-secondary text-center mb-12 sm:text-5xl lg:text-4xl xl:text-5xl">بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيْمِ</h1>
+      )}
       {surah.ayat ? (
         surah.ayat.map((item) => (
-          <div key={item.nomor} className="flex flex-col mb-7 border-b py-5 lg:py-10">
+          <div key={item.nomor} className="flex flex-col mb-5 border-b py-5 lg:py-10">
             <div className=" flex justify-end items-start gap-x-2 mb-3">
               <div className="relative flex justify-center items-center">
                 <span className="absolute font-semibold font-inter text-xs text-secondary">{item.nomor}</span>
                 <BorderSvg className="w-9 h-9" warna="#31363F"></BorderSvg>
               </div>
-              <p className="text-right font-utama text-4xl text-secondary sm:text-5xl lg:text-4xl">{item.ar}</p>
+              <p className="text-right font-utama text-4xl text-secondary sm:text-5xl lg:text-4xl xl:text-5xl">{item.ar}</p>
             </div>
             <p className="font-inter text-sm text-secondary leading-5 sm:text-base lg:text-sm">{item.idn}</p>
           </div>

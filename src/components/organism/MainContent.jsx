@@ -36,7 +36,7 @@ export const MainContent = () => {
   const buttonClassDoa = pilih ? 'bg-transparent border-2 border-primary text-primary' : 'bg-primary text-white';
 
   return (
-    <div ref={sectionRef} className="flex flex-col justify-center items-center mt-10 mb-20">
+    <div ref={sectionRef} className="flex flex-col justify-center items-center mt-10 mb-10">
       <h1 className="text-3xl mb-10 text-start font-inter font-semibold w-full text-primary">
         Learn & Recite Quran everytime
       </h1>
